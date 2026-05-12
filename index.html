@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB TEK | Installation & Teknik</title>
+    <title>NB TEK | Lydteknik & Installation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #050505;
-            --glass-bg: rgba(20, 20, 20, 0.5);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
+            --bg-base: #080808;
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #ffffff;
             --text-muted: #888888;
         }
 
@@ -23,145 +23,110 @@
 
         body {
             background-color: var(--bg-base);
-            color: var(--text-main);
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative;
+            background: radial-gradient(circle at 0% 0%, #1a1a1a 0%, #080808 100%);
         }
 
-        /* Dynamisk animeret baggrund */
-        .ambient-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150vw;
-            height: 150vh;
-            transform: translate(-50%, -50%);
-            background: 
-                radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.04), transparent 30%),
-                radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.03), transparent 30%);
-            animation: drift 15s infinite alternate ease-in-out;
-            z-index: 0;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(3deg) scale(1.05); }
-        }
-
-        /* Forbedret Glassmorphism Card */
         .glass-container {
-            position: relative;
-            z-index: 1;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3.5rem 2.5rem;
+            border-radius: 12px;
+            padding: 4rem;
             width: 90%;
-            max-width: 520px;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            max-width: 650px;
+            text-align: left; /* Venstrestiller alt */
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
         }
 
-        /* Logo & Typografi */
-        .logo-text {
-            font-size: 2.2rem;
+        h1 {
+            font-size: 1.4rem;
             font-weight: 800;
-            letter-spacing: 0.4rem;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(180deg, #ffffff 0%, #777777 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.2rem;
+            margin-bottom: 2rem;
             text-transform: uppercase;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
         }
 
         .services {
             list-style: none;
             margin-bottom: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 1.5rem;
         }
 
         .services li {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 400;
-            letter-spacing: 0.15rem;
-            color: #c4c4c4;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.8rem;
+            color: #e0e0e0;
             text-transform: uppercase;
-            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .services li:hover {
-            color: #ffffff;
-            transform: scale(1.02);
+        .contact-info {
+            margin-bottom: 4rem;
         }
 
-        /* Premium Knap */
-        .contact-btn {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-main);
+        .contact-info a {
+            color: var(--accent);
             text-decoration: none;
-            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 0.15rem;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            margin-bottom: 3.5rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.1rem;
+            transition: opacity 0.2s;
         }
 
-        .contact-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        .contact-info a:hover {
+            opacity: 0.6;
         }
 
-        /* Footer */
         footer {
-            font-size: 0.7rem;
-            font-weight: 300;
+            font-size: 0.75rem;
             color: var(--text-muted);
             line-height: 1.8;
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.05rem;
             text-transform: uppercase;
         }
 
-        footer strong {
-            color: #aaaaaa;
+        .company-name {
+            color: #ffffff;
             font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
         }
     </style>
 </head>
 <body>
-    <div class="ambient-bg"></div>
 
     <div class="glass-container">
-        <div class="logo-text">NB TEK</div>
+        <h1>Lydteknik & Installation</h1>
 
         <ul class="services">
-            <li>Lydteknik & Installation</li>
-            <li>Reparation af Lyd- & Svagstrømsteknik</li>
+            <li>Reparation af lyd- & svagstrømsteknik</li>
             <li>Trædesign & Installation</li>
-            <li>Certificeret Mandskab</li>
+            <li>Certificeret mandskab til koncert- & byggebranchen</li>
         </ul>
 
-        <a href="mailto:info@nbtek.dk" class="contact-btn">info@nbtek.dk</a>
+        <div class="contact-info">
+            <a href="mailto:info@nbtek.dk">ALLE HENVENDELSER: INFO@NBTEK.DK</a>
+        </div>
 
         <footer>
-            <strong>NB TEK</strong><br>
+            <span class="company-name">NB TEK</span>
             Refshalevej 194<br>
             1432 København K<br>
             CVR: 32699022
         </footer>
     </div>
+
 </body>
 </html>
