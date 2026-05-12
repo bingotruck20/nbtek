@@ -3,138 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB TEK | Lydteknik & Installation</title>
+    <title>NB TEK | Installation & Teknik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-base: #050505;
+            --glass-bg: rgba(20, 20, 20, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #888888;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background: var(--bg);
-            color: var(--text);
-            height: 100vh;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Forhindrer scroll - "Above the fold" */
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Glassmorphism Container */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
+        /* Dynamisk animeret baggrund */
+        .ambient-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150vw;
+            height: 150vh;
+            transform: translate(-50%, -50%);
+            background: 
+                radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.04), transparent 30%),
+                radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.03), transparent 30%);
+            animation: drift 15s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(3deg) scale(1.05); }
+        }
+
+        /* Forbedret Glassmorphism Card */
+        .glass-container {
+            position: relative;
+            z-index: 1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 3.5rem 2.5rem;
             width: 90%;
-            max-width: 600px;
+            max-width: 520px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        /* Logotype Plads */
-        .logo-area {
-            margin-bottom: 2rem;
+        /* Logo & Typografi */
+        .logo-text {
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: 0.2rem;
-            font-size: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
+            letter-spacing: 0.4rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(180deg, #ffffff 0%, #777777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
-        .logo-placeholder {
-            max-width: 150px;
-            filter: brightness(0) invert(1); /* Gør sort logo hvidt */
-        }
-
-        /* Indhold */
         .services {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .services li {
             font-size: 0.85rem;
-            letter-spacing: 0.1rem;
-            margin: 0.8rem 0;
-            color: #cccccc;
+            font-weight: 400;
+            letter-spacing: 0.15rem;
+            color: #c4c4c4;
+            text-transform: uppercase;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .services li:hover {
+            color: #ffffff;
+            transform: scale(1.02);
+        }
+
+        /* Premium Knap */
+        .contact-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 3.5rem;
+            transition: all 0.3s ease;
             text-transform: uppercase;
         }
 
-        .contact-link {
-            display: block;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-            transition: opacity 0.3s;
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
 
-        .contact-link:hover {
-            opacity: 0.7;
-        }
-
-        /* Footer Info */
+        /* Footer */
         footer {
             font-size: 0.7rem;
-            color: #666666;
-            line-height: 1.5;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.8;
+            letter-spacing: 0.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.05rem;
         }
 
-        /* Animation til baggrund */
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.4; }
-        }
-
-        .bg-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #2563eb10 0%, transparent 50%);
-            animation: pulse 8s infinite ease-in-out;
-            pointer-events: none;
+        footer strong {
+            color: #aaaaaa;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
+    <div class="ambient-bg"></div>
 
-    <div class="glass-card">
-        <div class="logo-area">
-            <img src="https://placehold.co/300x100/000/fff?text=NB+TEK" alt="NB TEK LOGO" class="logo-placeholder">
-        </div>
+    <div class="glass-container">
+        <div class="logo-text">NB TEK</div>
 
         <ul class="services">
             <li>Lydteknik & Installation</li>
-            <li>Reparation af lyd- & svagstrømsteknik</li>
+            <li>Reparation af Lyd- & Svagstrømsteknik</li>
             <li>Trædesign & Installation</li>
-            <li>Certificeret mandskab til koncert- & byggebranchen</li>
+            <li>Certificeret Mandskab</li>
         </ul>
 
-        <a href="mailto:info@nbtek.dk" class="contact-link">ALLE HENVENDELSER: INFO@NBTEK.DK</a>
+        <a href="mailto:info@nbtek.dk" class="contact-btn">info@nbtek.dk</a>
 
         <footer>
-            NB TEK<br>
-            REFSHALEVEJ $194$<br>
-            $1432$ KØBENHAVN K<br>
-            CVR: $32699022$
+            <strong>NB TEK</strong><br>
+            Refshalevej 194<br>
+            1432 København K<br>
+            CVR: 32699022
         </footer>
     </div>
 </body>
